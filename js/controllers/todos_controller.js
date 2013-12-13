@@ -16,6 +16,16 @@ TodoApp.TodosController = Ember.ArrayController.extend({
   hasCompleted: function() {
     return this.get('completed') > 0;
   }.property('completed'),
+  
+  allAreDone: function (key, value) {
+    if (value === undefined) {
+      return !!this.get('length') && this.everyBy('isCompleted', true);
+    } else {
+      this.setEach('isCompleted', value);
+      this.invoke('save');
+      return value;
+    }
+  }.property('@each.isCompleted'),
 
   actions: {
     createTodo: function() {
