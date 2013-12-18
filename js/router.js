@@ -1,9 +1,16 @@
 TodoApp.Router.map(function() {
-	this.resource('todos', { path: '/' }, function() {
+	this.route("index", {path: "/"});
+	this.resource('todos', function() {
 		// child routes
     	this.route('active');
     	this.route('completed');
 	});
+});
+
+TodoApp.IndexRoute = Ember.Route.extend({
+	redirect: function() {
+		this.transitionTo('todos');
+	}
 });
 
 TodoApp.TodosRoute = Ember.Route.extend({
