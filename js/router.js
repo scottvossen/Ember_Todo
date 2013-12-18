@@ -1,5 +1,5 @@
 TodoApp.Router.map(function() {
-	this.route("index", {path: "/"});
+	this.route("index", { path: "/" });
 	this.resource('todos', function() {
 		// child routes
     	this.route('active');
